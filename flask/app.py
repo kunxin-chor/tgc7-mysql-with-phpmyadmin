@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for
 import os
 import pymysql
 import random
+import companydb
 
 app = Flask(__name__)
 
@@ -13,14 +14,9 @@ conn = pymysql.connect(
 )
 
 
-def create_cursor():
-    return conn.cursor(pymysql.cursors.DictCursor)
-
-
 @app.route('/employees')
 def show_employees():
-    cursor = create_cursor()
-    cursor.execute("select * from employees")
+    cursor = companydb.get_all_employees()
     return render_template('all_employees.template.html', cursor=cursor)
 
 
