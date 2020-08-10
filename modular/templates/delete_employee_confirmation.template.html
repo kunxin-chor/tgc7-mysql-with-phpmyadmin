@@ -1,0 +1,12 @@
+{% extends 'base.template.html' %}
+
+{% block content %}
+<form method="POST">
+    <div class="alert alert-danger">
+     Are you sure you want to remove {{employee.firstName}} {{employee.lastName}} from the database?
+    
+        <input type="submit" value="Yes, delete" class="btn btn-primary"/>
+        <a href="#" class="btn btn-primary">Cancel</a>
+    </div>
+</form>
+{% endblock%}

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+    {%for each_employee in cursor %}
+        <li>
+            {{each_employee.firstName}} {{each_employee.lastName}}
+            <a href="{{ url_for('show_edit_employee_form', employeeNumber=each_employee.employeeNumber) }}">Edit</a>
+            <a href="{{ url_for('show_delete_employee_confirmation', employeeNumber=each_employee.employeeNumber) }}">Delete</a>
+        </li>
+    {%endfor%}
+    </ul>
+</body>
+</html>

@@ -1,0 +1,37 @@
+{% extends 'base.template.html' %}
+
+{% block content %}
+<form method="POST">
+    <div>
+        <label>First Name</label>
+        <input type="text" class="form-control" name="firstName" value="{{ employee.firstName}}"/>
+    </div>
+    <div>
+        <label>Last Name</label>
+        <input type="text" class="form-control" name="lastName" value = "{{ employee.lastName }}"/>
+    </div>
+    <div>
+        <label>Extension</label>
+        <input type="text" class="form-control" name="extension" value = "{{ employee.extension }}"/>
+    </div>
+    <div>
+        <label>Email</label>
+        <input type="text" class="form-control" name="email" value = "{{employee.email}}"/>
+    </div>
+    <div>
+        <label>Office</label>
+        <select name="officeCode" class="form-control">
+        {% for each_office in offices %}
+            <option value="{{each_office.officeCode}}"
+                {%if each_office.officeCode == employee.officeCode %} selected {%endif%}
+            >{{each_office.city}}</option>
+        {% endfor %}
+        </select>
+    </div>
+    <div>
+        <label>Job Title</label>
+        <input type="text" class="form-control" name="jobTitle" value="{{employee.jobTitle}}"/>
+    </div>
+    <input type="submit" class="btn btn-primary"/>
+</form>
+{% endblock%}
