@@ -159,6 +159,9 @@ insert into copies (book_id, quality) values (1, 5), (1, 3), (2, 3), (2, 3), (2,
 /* select all rows but with specific columns*/
 select firstName, lastName, email from employees;
 
+/* select all customers their salesRepEmployeeNumber is null */
+select * from customers where salesRepEmployeeNumber is NULL;
+
 /* select rows with specific critera */
 select * from employees where officeCode=1;
 select * from employees where emplyoeeNumber=1002;

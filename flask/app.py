@@ -155,6 +155,16 @@ def process_delete_employee(employeeNumber):
     return "employee deleted"
 
 
+@app.route('/customers')
+def show_customers():
+    cursor = conn.cursor(pymysql.cursors.DictCursor)
+    cursor.execute("""select salesRepEmployeeNumber, customerNumber, customerName, country, city, 
+        employees.firstName as employeeFirstName, employees.lastName as employeeLastName from customers left join employees
+        on customers.salesRepEmployeeNumber = employees.employeeNumber
+    """)
+    return render_template('all_customers.template.html', customers=cursor)
+
+
 # "magic code" -- boilerplate
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
