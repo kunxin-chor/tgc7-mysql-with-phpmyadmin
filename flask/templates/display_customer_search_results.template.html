@@ -1,0 +1,46 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Customer Number
+            </th>
+            <th>
+                Customer Name
+            </th>
+            <th>
+                Country
+            </th>
+            <th>
+                City
+            </th>
+            <th>
+                Sales Rep Employee Name
+            </th>            
+            <th>
+            </th>
+        </tr>        
+    </thead> 
+    <tbody>
+        {% for c in customers %}
+        <tr>
+            <td>{{ c.customerNumber }}</td>
+            <td>{{ c.customerName }}</td>
+            <td>{{ c.country }}</td>
+            <td>{{ c.city }}</td>
+            <td>
+            {%if c.salesRepEmployeeNumber %}
+                 <a href="{{ url_for('show_customers_by_sales_rep', employee_number=c.salesRepEmployeeNumber) }}">
+                {{ c.employeeFirstName}} {{c.employeeLastName}}
+                </a>
+            {% else %}
+                N/A
+            {%endif%}
+            </td>
+            <td>
+                <a class="btn btn-success btn-sm" href="{{ url_for( 'show_update_customer', customer_number=c.customerNumber ) }}">Edit</a>
+                <a class="btn btn-danger btn-sm" href="{{ url_for( 'show_delete_customer_confirmation', customer_number=c.customerNumber) }}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>   
+</table>

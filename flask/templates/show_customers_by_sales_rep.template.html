@@ -1,0 +1,11 @@
+{% extends 'base.template.html' %}
+
+{% block content %}
+
+<a href="{{ url_for('show_customers') }}" class="btn btn-primary">Show all Customers</a>
+
+<h3>Customers serviced by Sales Rep: {{employee.firstName}} {{employee.lastName}} </h3>
+{% include 'display_customer_search_results.template.html' %}
+
+
+{% endblock%}

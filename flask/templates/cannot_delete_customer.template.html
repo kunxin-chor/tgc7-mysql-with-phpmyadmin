@@ -1,0 +1,14 @@
+{% extends 'base.template.html' %} 
+
+{% block content %}
+
+  <div class="alert alert-danger">
+       You cannot delete the customer {{customer.customerNumber}}# {{customer.customerName}} because
+       it already have confirmed orders.
+        <div>
+            <a href="{{url_for('show_customers')}}" class="btn btn-primary">Back</a>
+        </div>
+
+    </div>
+
+{% endblock %}

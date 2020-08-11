@@ -1,52 +1,55 @@
 <div>
     <label>Customer Name</label>
-    <input type="text" name="customerName" class="form-control">
+    <input type="text" name="customerName" class="form-control" value="{{customer.customerName or ''}}">
 </div>
 <div>
     <label>Contact First Name</label>
-    <input type="text" name="contactFirstName" class="form-control">
+    <input type="text" name="contactFirstName" class="form-control" value="{{customer.contactFirstName or ''}}">
 </div>
 <div>
     <label>Contact Last Name</label>
-    <input type="text" name="contactLastName" class="form-control">
+    <input type="text" name="contactLastName" class="form-control" value="{{customer.contactLastName or ''}}">
 </div>
 <div>
     <label>Phone</label>
-    <input type="text" name="phone" class="form-control">
+    <input type="text" name="phone" class="form-control" value="{{customer.phone or ''}}">
 </div>
 <div>
     <label>Address Line 1</label>
-    <input type="text" name="addressLine1" class="form-control">
+    <input type="text" name="addressLine1" class="form-control" value="{{customer.addressLine1 or ''}}">
 </div>
 <div>
     <label>Address Line 2</label>
-    <input type="text" name="addressLine2" class="form-control">
+    <input type="text" name="addressLine2" class="form-control" value="{{customer.addressLine2 or ''}}">
 </div>
 <div>
     <label>City</label>
-    <input type="text" name="city" class="form-control">
+    <input type="text" name="city" class="form-control" value="{{customer.city or ''}}">
 </div>
 <div>
     <label>State</label>
-    <input type="text" name="state" class="form-control">
+    <input type="text" name="state" class="form-control" value="{{customer.state or ''}}">
 </div>
 <div>
     <label>Postal Code</label>
-    <input type="text" name="postalCode" class="form-control">
+    <input type="text" name="postalCode" class="form-control" value="{{customer.postalCode or ''}}">
 </div>
 <div>
     <label>Country</label>
-    <input type="text" name="country" class="form-control">
+    <input type="text" name="country" class="form-control" value="{{customer.country}}">
 </div>
 <div>
     <label>Sales Rep</label>
     <select name="salesRepEmployeeNumber" class="form-control">
+        <option value="0">N/A</option>
         {%for s in sales_rep%}
-            <option value='{{ s.employeeNumber}}'>{{s.firstName}} {{s.lastName}}</option>
+            <option value='{{ s.employeeNumber}}'
+                {%if customer.salesRepEmployeeNumber == s.employeeNumber %}selected{%endif%}            
+            >{{s.firstName}} {{s.lastName}}</option>
         {%endfor%}
     </select>
 </div>
 <div>
     <label>Credit Limit</label>
-    <input type="number" name="creditLimit" class="form-control">
+    <input type="number" name="creditLimit" value="{{customer.creditLimit}}" class="form-control">
 </div>

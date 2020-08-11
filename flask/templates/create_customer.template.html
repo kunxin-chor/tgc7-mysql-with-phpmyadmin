@@ -4,7 +4,9 @@
 <h1> Create New Customer</h1>
 <form method="POST">
 
-    {% include 'customer_form.template.html' %}
+    {%with customer={} %}
+       {% include 'customer_form.template.html' %}
+    {%endwith %}
 
     <input type="submit" value="Create" class="btn btn-primary"/>
 
