@@ -1,6 +1,11 @@
 {% extends 'base.template.html' %}
 
 {% block content %}
+
+<h1>All Customers</h1>
+
+<a href="{{ url_for('show_create_customer')}}" class="btn btn-primary">Create</a>
+
 <table class="table">
     <thead>
         <tr>

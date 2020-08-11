@@ -1,0 +1,12 @@
+{% extends 'base.template.html' %}
+
+{% block content %}
+<h1> Create New Customer</h1>
+<form method="POST">
+
+    {% include 'customer_form.template.html' %}
+
+    <input type="submit" value="Create" class="btn btn-primary"/>
+
+</form>
+{% endblock %}

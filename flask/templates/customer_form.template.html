@@ -1,0 +1,52 @@
+<div>
+    <label>Customer Name</label>
+    <input type="text" name="customerName" class="form-control">
+</div>
+<div>
+    <label>Contact First Name</label>
+    <input type="text" name="contactFirstName" class="form-control">
+</div>
+<div>
+    <label>Contact Last Name</label>
+    <input type="text" name="contactLastName" class="form-control">
+</div>
+<div>
+    <label>Phone</label>
+    <input type="text" name="phone" class="form-control">
+</div>
+<div>
+    <label>Address Line 1</label>
+    <input type="text" name="addressLine1" class="form-control">
+</div>
+<div>
+    <label>Address Line 2</label>
+    <input type="text" name="addressLine2" class="form-control">
+</div>
+<div>
+    <label>City</label>
+    <input type="text" name="city" class="form-control">
+</div>
+<div>
+    <label>State</label>
+    <input type="text" name="state" class="form-control">
+</div>
+<div>
+    <label>Postal Code</label>
+    <input type="text" name="postalCode" class="form-control">
+</div>
+<div>
+    <label>Country</label>
+    <input type="text" name="country" class="form-control">
+</div>
+<div>
+    <label>Sales Rep</label>
+    <select name="salesRepEmployeeNumber" class="form-control">
+        {%for s in sales_rep%}
+            <option value='{{ s.employeeNumber}}'>{{s.firstName}} {{s.lastName}}</option>
+        {%endfor%}
+    </select>
+</div>
+<div>
+    <label>Credit Limit</label>
+    <input type="number" name="creditLimit" class="form-control">
+</div>

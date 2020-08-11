@@ -165,6 +165,47 @@ def show_customers():
     return render_template('all_customers.template.html', customers=cursor)
 
 
+@app.route('/customers/create')
+def show_create_customer():
+    cursor = conn.cursor(pymysql.cursors.DictCursor)
+    cursor.execute("select * from employees where jobTitle like 'Sales Rep'")
+    return render_template('create_customer.template.html', sales_rep = cursor)
+
+
+@app.route('/customers/create', methods=["POST"])
+def process_create_customer():
+    sql = """
+        insert into customers (customerNumber, customerName, contactLastName, contactFirstName,
+            phone, addressLine1, addressLine2, city, state, postalCode, 
+            country, salesRepEmployeeNumber, creditLimit)
+            values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)      
+    """
+    customerNumber = random.randint(1000000, 9999999)
+    cursor = conn.cursor(pymysql.cursors.DictCursor)
+    #try:
+    cursor.execute(sql, [
+        customerNumber,
+        request.form.get('customerName'),
+        request.form.get('contactLastName'),
+        request.form.get('contactFirstName'),
+        request.form.get('phone'),
+        request.form.get('addressLine1'),
+        request.form.get('addressLine2'),
+        request.form.get('city'),
+        request.form.get('state'),
+        request.form.get('postalCode'),
+        request.form.get('country'),
+        request.form.get('salesRepEmployeeNumber'),
+        request.form.get('creditLimit')
+    ])
+    # except:
+    #     print(cursor._last_executed)
+
+    conn.commit()
+
+    return redirect(url_for('show_customers'))
+
+
 # "magic code" -- boilerplate
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
